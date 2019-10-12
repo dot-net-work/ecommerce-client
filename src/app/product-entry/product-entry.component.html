@@ -4,11 +4,13 @@
       <div>
         <select name="categoryId" [(ngModel)]="product.categoryId">
           <option value="">Select...</option>
-          <option value="2">Electronics</option>
-          <option value="3">Furnitures</option>
+          <option *ngFor="let category of categories" [value]="category.id">
+             {{category.name}}
+          </option>
+        
           </select>
         <br/>
-        <input type="text" name="name" [(ngModel)]="product.name" />
+        <input appHighlight type="text" name="name" [(ngModel)]="product.name" />
         <br/>
         <input type="number" name="price" [(ngModel)]="product.price" />
         <br/>

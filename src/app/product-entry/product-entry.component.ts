@@ -1,6 +1,8 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Product } from '../Models/product.model';
 import { ProductService } from '../product.service';
+import { Category } from '../Models/cateogry.model';
+import { CategoryService } from '../category.service';
 
 @Component({
   selector: 'product-entry',
@@ -9,17 +11,18 @@ import { ProductService } from '../product.service';
 })
 export class ProductEntryComponent implements OnInit {
 
-  constructor(private productService:ProductService) { 
+  constructor(private productService:ProductService, private categoryService: CategoryService) { 
     this.onSaved = new EventEmitter<Product>();
   }
 
   ngOnInit() {
-    
+    this.categoryService.getAll().subscribe(c=>this.categories=c);
   }
 
   @Output() onSaved: EventEmitter<Product>;
 
   product: Product = new Product();
+  categories: Category[];
   message: string;
 
   isSaved: boolean;

@@ -26,6 +26,9 @@ export class AppComponent {
    this.products.push(product);
   }
 
+  onProductEdit(product:Product){
+    console.log('app component -> product edit event fired!');
+  }
 
   
 }

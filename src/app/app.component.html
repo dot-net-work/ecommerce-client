@@ -334,14 +334,8 @@
     <div class="card">
      <product-entry (onSaved)="setProduct($event)"></product-entry>
     </div>
-    <div class="card" *ngFor="let product of products">
-       Name: {{product.name}}
-      <br/>
-      Price: {{product.price}}
-      <br/>
-      Is Active: {{product.isActive}}
-      <br/>
-      Category Id: {{product.categoryId}}
+    <div *ngFor="let p of products">
+      <product-info [product]="p" (onEdited)="onProductEdit($event)"></product-info>
     </div>
   </div>
 
