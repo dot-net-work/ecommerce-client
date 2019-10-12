@@ -2,7 +2,8 @@
         <h3>Product Entry</h3>
       </div>
       <div>
-        <select name="categoryId" [(ngModel)]="product.categoryId">
+        <form #myForm="ngForm" (ngSubmit)="save(myForm)">
+        <select name="categoryId" ngModel>
           <option value="">Select...</option>
           <option *ngFor="let category of categories" [value]="category.id">
              {{category.name}}
@@ -10,18 +11,26 @@
         
           </select>
         <br/>
-        <input appHighlight type="text" name="name" [(ngModel)]="product.name" />
+        <input appHighlight type="text" name="name" required #nameControl ngModel/>
         <br/>
-        <input type="number" name="price" [(ngModel)]="product.price" />
+        <input type="number" name="price" ngModel/>
         <br/>
-        <input type="checkbox" name="isActive" [(ngModel)]="product.isActive" />
+        <input type="checkbox" name="isActive" ngModel />
         <br/>   
-        <input type="button" value="Save" (click)="save()" />
-        
+        <input type="submit" value="Save"/>
+      </form>
       </div>
 
       <div *ngIf="message">
           {{message}}
       </div>
+
+      <h3>
+        Form: {{myForm.value | json }} Valid? {{myForm.valid}}
+        Model: {{product | json}}
+        NameControl: Classes: {{nameControl.className}} Valid:  {{nameControl.valid}} Pristine: {{nameControl.pristine}}
+
+        {{nameControl}}
+      </h3>
 
 
