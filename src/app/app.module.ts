@@ -8,13 +8,15 @@ import { ProductEntryComponent } from './product-entry/product-entry.component';
 import {HttpClientModule} from '@angular/common/http';
 import { HighlightDirective } from './Directives/highlight.directive';
 import { ProductInfoComponent } from './product-info/product-info.component';
+import { CustomerEntryComponent } from './customer-entry/customer-entry.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductEntryComponent,
     HighlightDirective,
-    ProductInfoComponent
+    ProductInfoComponent,
+    CustomerEntryComponent
   ],
   imports: [
     BrowserModule,
