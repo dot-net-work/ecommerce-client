@@ -1,1 +1,133 @@
-<p>customer-entry works!</p>
+<div class="panel panel-primary">
+    <div class="panel-heading">Customer Entry</div>
+    <div class="panel-body">
+        <form  [formGroup]="customerForm" >
+            <div class="form-horizontal">
+                <div class="form-group" [ngClass]="{'has-error': customerForm.get('name').errors && customerForm.get('name').touched}">
+                    <label
+                        for="Name"
+                        class="col-md-2 control-label"
+                    >
+                        Name
+                    </label>
+                    <div class="col-md-10">
+                        <input
+                            type="text"
+                            id="Name"
+                            name="Name"
+                            class="form-control"
+                            formControlName="name"
+                        >
+                    </div>
+                    <span class="help-block  col-md-offset-3"  *ngIf="this.customerForm.get('name').errors && this.customerForm.get('name').touched">
+                            <span *ngIf="this.customerForm.get('name').errors.required" >
+                                    Name is Required 
+                                </span>
+                            </span>
+                    
+                </div>
+                
+
+                <div class="form-group">
+                    <label
+                        for="Email"
+                        class="col-md-2 control-label"
+                    >
+                        Email
+                    </label>
+                    <div class="col-md-10">
+                        <input
+                            type="text"
+                            id="Email"
+                            name="Email"
+                            class="form-control"
+                            formControlName="email"
+                        >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label
+                        for="PhoneNo"
+                        class="col-md-2 control-label"
+                    >
+                        Phone
+                    </label>
+                    <div class="col-md-10">
+                        <input
+                            type="text"
+                            id="Phone"
+                            name="Phone"
+                            class="form-control"
+                            formControlName="phone"
+                        >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="rdSMS">SMS</label>
+                    <input
+                        type="radio"
+                        id="rdSMS"
+                        name="notification"
+                        value="sms"
+                        class="form-control"
+                        formControlName="notification"
+                    >
+                    <label for="rdPhone">Phone</label>
+                    <input
+                        type="radio"
+                        id="rdPhone"
+                        name="notification"
+                        value="phone"
+                        class="form-control"
+                        formControlName="notification"
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="isAddress">Address Enable</label>
+                    <input
+                        type="checkbox"
+                        id="isAddress"
+                        name="isAddress"
+                        value=""
+                        class="form-control"
+                        formControlName="isAddress"
+                    >
+                </div>
+                <div  *ngIf="this.customerForm.get('isAddress').value" class="form-group">
+                    <label
+                        for="Address"
+                        class="col-md-2 control-label"
+                    >
+                       Address
+                    </label>
+                    <div class="col-md-10">
+                        <input
+                            type="text"
+                            id="Address"
+                            name="Address"
+                            class="form-control"
+                            formControlName="address"
+                        >
+                    </div>
+                    <span class="help-block" *ngIf="customerForm.get('address').errors.required">
+                        Address is required
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <input
+                        type="submit"
+                        class="btn btn-primary"
+                        value="Save"
+                        [disabled]="this.customerForm.invalid"
+                    >
+                </div>
+            </div>
+        </form>
+        {{this.customerForm.value | json}}
+        {{this.customerForm.valid}}
+    </div>
+</div>
+
+
